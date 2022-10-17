@@ -41,20 +41,20 @@ const match2 = checkWinner(dolphinsAverage2, koalasAverage2);
 // console.log(match2);
 
 
-function calcTip(billValue)
-{
-    const tip = (billValue >= 50 && billValue <= 300) ? billValue * 0.15 : billValue * 0.2;
-    return tip;
-}
+// function calcTip(billValue)
+// {
+//     const tip = (billValue >= 50 && billValue <= 300) ? billValue * 0.15 : billValue * 0.2;
+//     return tip;
+// }
 
 // const test = calcTip(100);
 // console.log(test);
 
-const bills = [125, 555, 44];
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length - 1])];
-console.log(tips);
-const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[bills.length - 1] + tips[tips.length - 1]];
-console.log(bills, tips, totals);
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length - 1])];
+// console.log(tips);
+// const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[bills.length - 1] + tips[tips.length - 1]];
+// console.log(bills, tips, totals);
 
 const Mark =
 {
@@ -85,3 +85,38 @@ const higherBMI = Mark.calcBMI() > John.calcBMI ? `${Mark.fullName}'s BMI (${Mar
 console.log(higherBMI);
 
 
+
+function calcTip(billValue)
+{
+    const tip = (billValue >= 50 && billValue <= 300) ? billValue * 0.15 : billValue * 0.2;
+    return tip;
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) 
+{
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    totals.push(bills[i] + tip);
+}
+console.log(bills, tips, totals);
+
+
+const calcAverageTab = function (arr)
+{
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++)
+    {
+        // sum = sum + arr[i];
+        sum += arr[i];
+        // console.log(sum);
+    }
+    return sum / arr.length;
+
+}
+
+console.log(calcAverageTab([2, 3, 7]));
+console.log(calcAverageTab(totals));
+console.log(calcAverageTab(tips));
