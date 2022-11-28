@@ -50,15 +50,17 @@ const poll = {
     // Register the answer
     typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++;
 
-    displayResults(this.answers);
+    this.displayResults();
+    this.displayResults('string');
   },
   // Method to show answers
   displayResults(type = 'array')
   {
-    if (typeof type === 'string')
+    if (type === 'string')
     {
-      this.answers.join(',')
-      return `Poll results are ${this.answers.join(',')}`;
+      // "Poll results are 13, 2, 4, 1"
+
+      console.log(`Poll results are ${this.answers.join(', ')}`);
     }
     else
     {
@@ -70,3 +72,13 @@ const poll = {
 const answerButton = document.querySelector('.poll');
 answerButton.addEventListener('click', poll.registerNewAnswer.bind(poll));
 
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+
+
+
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+
+//BONUS TEST DATA 1: [5, 2, 3]
+//BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
