@@ -217,3 +217,16 @@ const addTaxRate = function (rate)
 const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
+
+function A()
+{
+    console.log('called A');
+    return false;
+}
+function B()
+{
+    console.log('called B');
+    return true;
+}
+
+console.log(A() && B());
