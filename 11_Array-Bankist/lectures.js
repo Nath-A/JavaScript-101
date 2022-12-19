@@ -189,3 +189,32 @@ console.log(balance);
 const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0]);
 
 console.log(max);
+
+//! PIPELINE 
+//To inspect current array at any stage of the pipeline, using the third parameter of the callback function)
+const totalDepositsUSD = movements
+    .filter(mov => mov > 0)
+    .map((mov, i, arr) =>
+    {
+        console.log(arr);
+        return mov * eurToUsd
+    })
+    // .map(mov => mov * eurToUsd)
+    .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+
+//! FIND METHOD
+//Return the element itself and the first one only. Not the same as filter who returns an array with all elements
+//Goal : find exactly ONE element
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+//! INCLUDE => EQUIALITY
+console.log(movements);
+console.log(movements.includes(-130));
+
+//! SOME => CONDITION
+console.log(movements.some(mov => mov === -130));
+const anyDeposit = movements.some(mov => mov > 0);
+console.log(anyDeposit);
